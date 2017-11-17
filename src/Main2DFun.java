@@ -37,6 +37,8 @@ public class Main2DFun {
         // one starting with 1.)
         // Assign the result to row2Sum
         int row2Sum = 0;
+        for (int i=0; i<cols; ++i)
+            row2Sum += arr2D[2][i];
         
         System.out.println(row2Sum);  
         keys[2]=row2Sum+92 ;
@@ -45,6 +47,8 @@ public class Main2DFun {
         // Calculate the sum of row number 1 
         // Assign the value to row1Sum
         int row1Sum = 0;
+        for (int i=0; i<cols; ++i)
+            row1Sum += arr2D[1][i];
         
         System.out.println(row1Sum);
         keys[3]=81+row1Sum ;
@@ -55,7 +59,7 @@ public class Main2DFun {
         // Assign the value to col0Sum
         int col0Sum = 0;
         for (int rr=0; rr<rows; ++rr)
-            col0Sum+=arr2D[rr][0];
+            col0Sum += arr2D[rr][0];
         
         System.out.println(col0Sum);
         keys[4]=col0Sum+91 ;
@@ -67,7 +71,10 @@ public class Main2DFun {
         // Assign the value to diagSum
         
         int diagSum = 0;
-        
+        for (int r=0; r<arr2D.length; ++r) {
+            for (int c=arr2D.length; c>=0; --c)
+                if (r == c) diagSum += arr2D[r][c];
+        }
         
         System.out.println(diagSum);
         keys[6]=diagSum+92 ;
@@ -77,7 +84,11 @@ public class Main2DFun {
         // Calculate the sum of all the elements
         // Assign it to totalSum
         int totalSum = 0;
-
+        for (int r=0; r<rows; ++r) {
+            for (int c=0; c<cols; ++c) {
+                totalSum += arr2D[r][c];
+            }
+        }
 
 
         System.out.println("totalsum="+totalSum);
@@ -87,7 +98,11 @@ public class Main2DFun {
         // Find the maximum value of all the elements
         // Assign it to maxVal
         int maxVal = 0;
-        
+        for (int r=0; r<arr2D.length; ++r) {
+            for (int c=0; c<arr2D.length; ++c) {
+                if (arr2D[r][c] > maxVal) maxVal = arr2D[r][c];
+            }
+        }
 
         System.out.println("maxVal="+maxVal);
         keys[10]=maxVal + 94 ;
@@ -96,7 +111,12 @@ public class Main2DFun {
         // Find the minimum value of all the elements        
         // Assign it to minVal
         int minVal = 0;
-
+        minVal = arr2D[0][0];
+        for (int r=0; r<rows; ++r) {
+            for (int c=0; c<cols; ++c) {
+                if (arr2D[r][c] < minVal) minVal = arr2D[r][c];
+            }
+        }
 
         System.out.println("minVal="+minVal);
         keys[11]=minVal + 114 ;
@@ -108,7 +128,14 @@ public class Main2DFun {
         // Then, find the element to it's left and the element below it
         // Assign it to the variables r and c below        
         int r=2,c=2 ;
-
+        for (int rr=0; rr<rows; ++rr) {
+            for (int cc=0; cc<cols; ++cc) {
+                if (arr2D[rr][cc] == 0) {
+                    r = rr;
+                    c = cc;
+                }
+            }
+        }
         
         
         // Change the code here!
